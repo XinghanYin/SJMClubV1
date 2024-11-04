@@ -1,0 +1,151 @@
+/* 字体定义 */
+@font-face {
+    font-family: 'EnFont';
+    src: url('fonts/en.woff2') format('woff2'),
+         url('fonts/en.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZhReRegular';
+    src: url('fonts/zh_reRegular.woff2') format('woff2'),
+         url('fonts/zh_reRegular.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZhConRegular';
+    src: url('fonts/zh_conRegular.woff2') format('woff2'),
+         url('fonts/zh_conRegular.woff') format('woff');
+    font-display: swap;
+}
+
+/* 定义全局字体变量 */
+:root {
+    --font-main-zh: ZhReRegular, sans-serif;
+    --font-footer-zh: ZhConRegular, sans-serif;
+    --font-en: EnFont, 'Arial', sans-serif;
+}
+
+/* 重置body默认样式并设置基础字体 */
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #000;
+    font-family: var(--font-main-zh);
+}
+
+/* 自动应用字体类 */
+.chinese-text {
+    font-family: var(--font-main-zh);
+}
+
+.english-text {
+    font-family: var(--font-en);
+}
+
+/* 创建全屏容器并居中内容 */
+#container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+/* 创建渐变背景层 */
+#gradient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: background 0.5s ease;
+    background: linear-gradient(45deg, #1a1a1a, #000);
+}
+
+/* 内容区域样式 */
+#content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+}
+
+/* Logo容器样式 */
+#logo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 2em;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+    flex: 0 0 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo默认和悬停状态的共同样式 */
+.logo-default, .logo-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: opacity 0.3s ease;
+    object-fit: contain;
+}
+
+/* Logo默认状态样式 */
+.logo-default {
+    background-image: url('img/ben.svg');
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Logo悬停状态样式 */
+.logo-hover {
+    background-image: url('img/ben.svg');
+    opacity: 0;
+    z-index: 1;
+}
+
+/* 悬停时默认logo消失 */
+#logo:hover .logo-default {
+    opacity: 0;
+}
+
+/* 悬停时显示悬停logo */
+#logo:hover .logo-hover {
+    opacity: 1;
+}
+
+/* 标题文字样式 */
+.title-text {
+    font-size: 2em;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    transition: all 0.3s ease, opacity 0.3s ease;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.title-text span {
+    display: block;
+    line-height: 1.2;
+}

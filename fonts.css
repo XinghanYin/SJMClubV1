@@ -1,0 +1,40 @@
+/* 英文字体定义 */
+@font-face {
+    font-family: 'EnFont';
+    src: url('en.woff2') format('woff2'),
+         url('en.woff') format('woff');
+    font-display: swap;
+}
+
+/* 中文 reRegular 字体定义 - 主要字体 */
+@font-face {
+    font-family: 'ZhReRegular';
+    src: url('zh_reRegular.woff2') format('woff2'),
+         url('zh_reRegular.woff') format('woff');
+    font-display: swap;
+}
+
+/* 中文 conRegular 字体定义 - footer专用 */
+@font-face {
+    font-family: 'ZhConRegular';
+    src: url('zh_conRegular.woff2') format('woff2'),
+         url('zh_conRegular.woff') format('woff');
+    font-display: swap;
+}
+
+/* 定义全局默认字体变量 */
+:root {
+    --font-main-zh: ZhReRegular, sans-serif;
+    --font-footer-zh: ZhConRegular, sans-serif;
+    --font-en: EnFont, 'Arial', sans-serif;
+}
+
+/* 全局默认使用中文 reRegular */
+body {
+    font-family: var(--font-main-zh);
+}
+
+/* 英文内容使用英文字体 */
+[lang="en"] {
+    font-family: var(--font-en);
+}
